@@ -25,9 +25,7 @@ class EmployeeController
 }
 
 
-// $app = new Container();
-// $app->bind('employees', function() {
-// 	return new EmployeeController(new EmployeeRepository());
-// });
-// $empObject =$app->make('employees');
-// $empObject->listEmployeeAction();
+$app = new Container();
+$app->bind('EmployeeRepositoryInterface', 'EmployeeRepository');
+$empObject =$app->make('EmployeeController');
+$empObject->listEmployeeAction();

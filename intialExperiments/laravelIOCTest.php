@@ -46,18 +46,9 @@ class RFBillingController
 }
 
 $app = new Container();
-// print_r($app->make('RFBillingController'));
 
-// // It works
-$app->bind('billing', function() {
-	return new RFBillingController(new Authorize());
-});
+// Bind Interface With Implementation
+$app->bind('Gateway', 'Stripe');
 
-// $app->bind('App\Http\IoC\Gateway', 'App\Http\IoC\RFBillingController');
-// var_dump($containr); exit;
-
-// Dependency injection gets handled by IoC
-// $rfObject =$app->make(RFBillingController::class);
-
-$rfObject =$app->make('billing');
+$rfObject =$app->make('RFBillingController');
 $rfObject->store();
