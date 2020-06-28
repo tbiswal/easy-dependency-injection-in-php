@@ -1,0 +1,8 @@
+{
+    "require": {
+        "illuminate/container": "^7.17"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    }
+}
