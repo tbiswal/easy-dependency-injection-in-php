@@ -1,31 +1,33 @@
 <?php 
 declare(strict_types=1);
 require __DIR__ . '/../../vendor/autoload.php';
+require_once(__DIR__ . '/../EmployeeRepositoryInterface.php');
+require_once(__DIR__ . '/../EmployeeController.php');
 
 use PHPUnit\Framework\TestCase;
+use Illuminate\Container\Container;
 
-final class EmailTest extends TestCase
+class EmployeeTest extends TestCase
 {
-    public function testCanBeCreatedFromValidEmailAddress(): void
-    {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
+    /**
+     * Test Employee List Using mock
+     */
+    public function testEmployeeList() {
+        $emplList = array(
+            0 => array (
+                'emp_no' => 10001,
+                'first_name' => 'Georgi',
+                'last_name' => 'Facello'
+            )
         );
-    }
 
-    public function testCannotBeCreatedFromInvalidEmailAddress(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
+        $employeeListMock = \Mockery::mock('EmployeeRepositoryInterface');
+        $employeeListMock->shouldReceive('employeeList')->once()->andReturn($emplList);
 
-        Email::fromString('invalid');
-    }
+        $app = new Container();
+        $employeeController = $app->instance('EmployeeRepositoryInterface', $employeeListMock);;
 
-    public function testCanBeUsedAsString(): void
-    {
-        $this->assertEquals(
-            'user@example.com',
-            Email::fromString('user@example.com')
-        );
+        $this->assertNotEquals(array(), $employeeController->employeeList());
+        $this->assertEquals($emplList, $employeeController->employeeList());
     }
 }
