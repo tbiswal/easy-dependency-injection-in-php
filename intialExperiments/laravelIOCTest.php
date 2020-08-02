@@ -4,20 +4,20 @@ require __DIR__ . '/../vendor/autoload.php';
 use Illuminate\Container\Container;
 
 
-interface Gateway
+interface Billing
 {
 	public function subscribe($email);
 }
 
 
-class Stripe implements Gateway
+class Stripe implements Billing
 {
 	public function subscribe($email) {
 		die('Stripe subscription added');
 	}
 }
 
-class Authorize implements Gateway
+class Authorize implements Billing
 {
 	public function subscribe($email) {
 		die('Authorize subscription added');
@@ -25,30 +25,30 @@ class Authorize implements Gateway
 }
 
 
-class RFBillingController
+class BillingController
 {
 
 
   /**
-	* @var Gateway
+	* @var Billing
 	*/
-	protected $gateway;
+	protected $billing;
 
-	public function __construct(Gateway $gateway) {
+	public function __construct(Billing $billing) {
 
-		$this->gateway = $gateway;
+		$this->billing = $billing;
 	}
 
-	public function store() {
+	public function billable() {
 		$email = 'tan.biswal@rapidfunnel.com';
-		$this->gateway->subscribe($email);
+		$this->billing->subscribe($email);
 	}
 }
 
 $app = new Container();
 
 // Bind Interface With Implementation
-$app->bind('Gateway', 'Stripe');
+$app->bind('Billing', 'Stripe');
 
-$rfObject =$app->make('RFBillingController');
-$rfObject->store();
+$rfObject =$app->make('BillingController');
+$rfObject->billable();

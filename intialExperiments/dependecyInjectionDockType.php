@@ -3,27 +3,25 @@
 class Stripe
 {
 	public function subscribe($email) {
-		die('Stripe subscription added');
+		die('Stripe subscription added.');
 	}
 }
 
 class Authorize
 {
 	public function subscribe($email) {
-		die('Authorize subscription added');
+		die('Authorize subscription added.');
 	}
 }
 
 
-class RFBillingController
+class BillingController
 {
-	public function store($rfbilling) {
+	public function billable($rfbilling) {
 		$email = 'tan.biswal@rapidfunnel.com';
 		$rfbilling->subscribe($email);
 	}
 }
 
-$rfObject = new RFBillingController();
-
-// $rfObject->store(new Stripe());
-$rfObject->store(new Authorize());
+$rfObject = new BillingController();
+$rfObject->billable(new Stripe());

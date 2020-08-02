@@ -21,15 +21,15 @@ class Authorize implements Billing
 }
 
 
-class RFBillingController
+class BillingController
 {
-	public function store(Billing $rfbilling) {
+	public function billable(Billing $rfbilling) {
 		$email = 'tan.biswal@rapidfunnel.com';
 		$rfbilling->subscribe($email);
 	}
 }
 
-$rfObject = new RFBillingController();
+$rfObject = new BillingController();
 
 // $rfObject->store(new Stripe());
-$rfObject->store(new Authorize());
+$rfObject->billable(new Authorize());

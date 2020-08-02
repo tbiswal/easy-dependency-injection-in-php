@@ -1,19 +1,19 @@
 <?php
 
-interface Gateway
+interface Billing
 {
 	public function subscribe($email);
 }
 
 
-class Stripe implements Gateway
+class Stripe implements Billing
 {
 	public function subscribe($email) {
 		die('Stripe subscription added');
 	}
 }
 
-class Authorize implements Gateway
+class Authorize implements Billing
 {
 	public function subscribe($email) {
 		die('Authorize subscription added');
@@ -21,28 +21,24 @@ class Authorize implements Gateway
 }
 
 
-class RFBillingController
+class BillingController
 {
-
-
   /**
-	* @var Gateway
+	* @var Billing
 	*/
-	protected $gateway;
+	protected $billing;
 
-	public function __construct(Gateway $gateway) {
+	public function __construct(Billing $billing) {
 
-		$this->gateway = $gateway;
+		$this->billing = $billing;
 	}
 
-	public function store() {
+	public function billable() {
 		$email = 'tan.biswal@rapidfunnel.com';
-		$this->gateway->subscribe($email);
+		$this->billing->subscribe($email);
 	}
 }
 
-$rfObject = new RFBillingController(new Stripe());
+$billingObject = new BillingController(new Authorize());
 
-
-// $rfObject->store(new Stripe());
-$rfObject->store();
+$billingObject->billable();
