@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class HandMadeContainer
+ * Manage and resolve dependency recursively using Php Reflection class features
  * 
  * Source https://gist.github.com/MustafaMagdi/2bb27aebf6ab078b1f3e5635c0282fac
  */
