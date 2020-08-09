@@ -19,7 +19,6 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 		$password = "";
 		$dbname = "employees";
 
-
 		try {
 	  		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
   		  	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -38,6 +37,6 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 	}
 }
 
-$empRepObj = new EmployeeRepository();
-$empRepObj->employeeList();
+// $empRepObj = new EmployeeRepository();
+// $empRepObj->employeeList();
 // (new EmployeeRepository()->employeeList());
