@@ -9,32 +9,29 @@ class Logger
 
 class UserProfile
 {
-	public function createUser() {
-
-		// Create User logic
+    public function createUser() {
+        // Create User logic
 
         // Log message
         $logger = new Logger();
-		$logger->log("User created \n\n");
-	}
+        $logger->log("User created \n\n");
+    }
 
-	public function updateUser() {
-		
-		// Update User logic
+    public function updateUser() {
+        // Update User logic
 
-		// Log message
-		$logger = new Logger();
-		$logger->log("User updated \n\n");
-	}
+        // Log message
+        $logger = new Logger();
+        $logger->log("User updated \n\n");
+    }
 
-	public function deleteUser() {
-		
-		// Delete User logic
+    public function deleteUser() {
+        // Delete User logic
 
-		// Log message
-		$logger = new Logger();
-		$logger->log("User deleted \n\n");
-	}
+        // Log message
+        $logger = new Logger();
+        $logger->log("User deleted \n\n");
+    }
 }
 
 $userProfileObj = new UserProfile();

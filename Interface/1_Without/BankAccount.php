@@ -16,7 +16,7 @@ class BankAccount
 
         return $balance + ($balance * $rate);
     }
-    
+
     public function getCheckingInterestRate() {
         return .01;
     }

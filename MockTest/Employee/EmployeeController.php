@@ -11,17 +11,17 @@ use Illuminate\Container\Container;
  */
 class EmployeeController
 {
-	protected $employees;
+    protected $employees;
 
-	function __construct(EmployeeRepositoryInterface $employees)
-	{
-		$this->employees = $employees;
-	}
+    function __construct(EmployeeRepositoryInterface $employees)
+    {
+        $this->employees = $employees;
+    }
 
-	public function listEmployeeAction() {
-		$employeeList = $this->employees->employeeList();
-		print_r($employeeList);
-	}
+    public function listEmployeeAction() {
+        $employeeList = $this->employees->employeeList();
+        print_r($employeeList);
+    }
 }
 
 

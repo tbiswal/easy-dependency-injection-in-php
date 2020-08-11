@@ -6,42 +6,42 @@ use Illuminate\Container\Container;
 
 class Logger 
 {
-	public function log($message) {
-		print("\nLogging message: $message");
-	}
+    public function log($message) {
+        print("\nLogging message: $message");
+    }
 }
 
 class UserProfile
 {
-	private $logger;
+    private $logger;
 
-	public function __construct(Logger $logger) {
-		$this->logger = $logger;
-	}
+    public function __construct(Logger $logger) {
+        $this->logger = $logger;
+    }
 
-	public function createUser() {
+    public function createUser() {
 
-		// Create User logic
+        // Create User logic
 
-		// Log message
-		$this->logger->log("User created \n\n");
-	}
+        // Log message
+        $this->logger->log("User created \n\n");
+    }
 
-	public function updateUser() {
-		
-		// Update User logic
+    public function updateUser() {
+        
+        // Update User logic
 
-		// Log message
-		$this->logger->log("User updated \n\n");
-	}
+        // Log message
+        $this->logger->log("User updated \n\n");
+    }
 
-	public function deleteUser() {
-		
-		// Delete User logic
+    public function deleteUser() {
+        
+        // Delete User logic
 
-		// Log message
-		$this->logger->log("User deleted \n\n");
-	}
+        // Log message
+        $this->logger->log("User deleted \n\n");
+    }
 }
 
 $app = new Container();

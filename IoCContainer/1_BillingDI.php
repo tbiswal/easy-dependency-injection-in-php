@@ -2,14 +2,14 @@
 
 interface PaymentAPI
 {
-	public function subscribe($email);
+    public function subscribe($email);
 }
 
 class Stripe implements PaymentAPI
 {
-	public function subscribe($email) {
-		die('Stripe subscription added');
-	}
+    public function subscribe($email) {
+        die('Stripe subscription added');
+    }
 }
 
 // class Authorize implements PaymentAPI
@@ -22,20 +22,20 @@ class Stripe implements PaymentAPI
 
 class BillingService
 {
-  /**
-	* @var PaymentAPI
-	*/
-	protected $paymentAPI;
+    /**
+    * @var PaymentAPI
+    */
+    protected $paymentAPI;
 
-	public function __construct(PaymentAPI $paymentAPI) {
+    public function __construct(PaymentAPI $paymentAPI) {
 
-		$this->paymentAPI = $paymentAPI;
-	}
+        $this->paymentAPI = $paymentAPI;
+    }
 
-	public function billable() {
-		$email = 'tan.biswal@rapidfunnel.com';
-		$this->paymentAPI->subscribe($email);
-	}
+    public function billable() {
+        $email = 'tan.biswal@rapidfunnel.com';
+        $this->paymentAPI->subscribe($email);
+    }
 }
 
 $billingService = new BillingService(new Stripe());
