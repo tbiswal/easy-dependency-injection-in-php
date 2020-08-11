@@ -24,7 +24,6 @@ class UserProfile
     }
 
     public function createUser() {
-
         // Create User logic
 
         // Log message
@@ -32,7 +31,6 @@ class UserProfile
     }
 
     public function updateUser() {
-        
         // Update User logic
 
         // Log message
@@ -40,7 +38,6 @@ class UserProfile
     }
 
     public function deleteUser() {
-        
         // Delete User logic
 
         // Log message

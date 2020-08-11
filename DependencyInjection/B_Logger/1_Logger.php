@@ -2,9 +2,9 @@
 
 class Logger 
 {
-	public function log($message) {
-		print("\nLogging message: $message");
-	}
+    public function log($message) {
+        print("\nLogging message: $message");
+    }
 }
 
 class UserProfile
