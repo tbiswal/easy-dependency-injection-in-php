@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 require_once(__DIR__ . '/EmployeeRepositoryInterface.php');
 require_once(__DIR__ . '/EmployeeRepository.php');
 
@@ -25,7 +25,7 @@ class EmployeeController
 }
 
 
-$app = new Container();
-$app->bind('EmployeeRepositoryInterface', 'EmployeeRepository');
-$empObject =$app->make('EmployeeController');
-$empObject->listEmployeeAction();
+// $app = new Container();
+// $app->bind('EmployeeRepositoryInterface', 'EmployeeRepository');
+// $empObject =$app->make('EmployeeController');
+// $empObject->listEmployeeAction();

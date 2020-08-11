@@ -2,17 +2,9 @@
 
 require_once(__DIR__ . '/EmployeeRepositoryInterface.php');
 
-/**
- * 
- */
 class EmployeeRepository implements EmployeeRepositoryInterface
 {
 	
-	// function __construct(argument)
-	// {
-	// 	# code...
-	// }
-
 	public function employeeList() {
 		$servername = "localhost";
 		$username = "root";
@@ -36,7 +28,3 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 		}
 	}
 }
-
-// $empRepObj = new EmployeeRepository();
-// $empRepObj->employeeList();
-// (new EmployeeRepository()->employeeList());

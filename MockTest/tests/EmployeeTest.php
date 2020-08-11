@@ -1,8 +1,8 @@
 <?php 
 declare(strict_types=1);
 require __DIR__ . '/../../vendor/autoload.php';
-require_once(__DIR__ . '/../EmployeeRepositoryInterface.php');
-require_once(__DIR__ . '/../EmployeeController.php');
+require_once(__DIR__ . '/../Employee/EmployeeRepositoryInterface.php');
+require_once(__DIR__ . '/../Employee/EmployeeController.php');
 
 use PHPUnit\Framework\TestCase;
 use Illuminate\Container\Container;
@@ -31,3 +31,5 @@ class EmployeeTest extends TestCase
         $this->assertEquals($emplList, $employeeController->employeeList());
     }
 }
+
+// dip tanmayabiswal$ ./vendor/bin/phpunit MockTest/tests/
