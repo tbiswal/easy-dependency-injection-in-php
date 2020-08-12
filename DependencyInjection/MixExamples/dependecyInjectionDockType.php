@@ -1,4 +1,5 @@
 <?php
+namespace DockType;
 
 class Stripe
 {
@@ -15,7 +16,7 @@ class Authorize
 }
 
 
-class BillingController
+class BillingService
 {
     public function billable($rfbilling) {
         $email = 'tan.biswal@rapidfunnel.com';
@@ -23,5 +24,5 @@ class BillingController
     }
 }
 
-$billingController = new BillingController();
-$billingController->billable(new Stripe());
+$billingService = new BillingService();
+$billingService->billable(new Stripe());

@@ -1,35 +1,34 @@
 <?php
+namespace InjectInterface;
 
-interface Billing
+interface PaymentAPI
 {
     public function subscribe($email);
 }
 
-
-class Stripe implements Billing
+class Stripe implements PaymentAPI
 {
     public function subscribe($email) {
         die('Stripe subscription added');
     }
 }
 
-class Authorize implements Billing
+class Authorize implements PaymentAPI
 {
-    public function subscribe($email) {
-        die('Authorize subscription added');
-    }
+	public function subscribe($email) {
+		die('Authorize subscription added');
+	}
 }
 
-
-class BillingController
+class BillingService
 {
-    public function billable(Billing $rfbilling) {
+    public function billable(PaymentAPI $paymentAPI) {
         $email = 'tan.biswal@rapidfunnel.com';
-        $rfbilling->subscribe($email);
+        $paymentAPI->subscribe($email);
     }
 }
 
-$billingController = new BillingController();
+$billingService = new BillingService();
 
-// $billingController->store(new Stripe());
-$billingController->billable(new Authorize());
+$billingService->billable(new Stripe());
+// $billingService->billable(new Authorize());
