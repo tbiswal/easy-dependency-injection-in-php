@@ -11,34 +11,6 @@ interface Battery
     public function chargeLeft($hoursUsed);
 }
 
-
-class TorchLight
-{
-    private $battery;
-    private $hoursUsed;
-
-    public function __construct($hoursUsed, Battery $battery)
-    {
-        $this->hoursUsed = $hoursUsed;
-        $this->battery = $battery;
-    }
-
-    public function on()
-    {
-        if ($this->battery->chargeLeft($this->hoursUsed) >= 1) {
-            die('Flash Light On');
-        } else {
-            die('Flash light is off as no charge left.');
-        }
-    }
-
-    public function off()
-    {
-        die('Flash Light Off');
-    }
-}
-
-
 class Duracell implements Battery
 {
     private $batteryLife;
@@ -58,6 +30,36 @@ class Duracell implements Battery
     }
 }
 
+
+class TorchLight
+{
+    private $battery;
+    private $hoursUsed;
+
+    public function __construct($hoursUsed, Battery $battery)
+    {
+        $this->hoursUsed = $hoursUsed;
+        $this->battery = $battery;
+    }
+
+    public function on()
+    {
+        if ($this->battery->chargeLeft($this->hoursUsed) >= 1) {
+            print("Flash light is on. \n");
+        } else {
+            print('Flash light is off as no charge left.');
+        }
+    }
+
+    public function off()
+    {
+        print('Flash light is off.');
+    }
+}
+
+
 $flashLightObj = new TorchLight(10, new Duracell());
 $flashLightObj->on();
 $flashLightObj->off();
+
+exit;
