@@ -4,9 +4,10 @@ require __DIR__ . '/../vendor/autoload.php';
 use Illuminate\Container\Container;
 
 
-class Logger 
+class Logger
 {
-    public function log($message) {
+    public function log($message)
+    {
         print("\nLogging message: $message");
     }
 }
@@ -15,11 +16,13 @@ class UserProfile
 {
     private $logger;
 
-    public function __construct(Logger $logger) {
+    public function __construct(Logger $logger)
+    {
         $this->logger = $logger;
     }
 
-    public function createUser() {
+    public function createUser()
+    {
 
         // Create User logic
 
@@ -27,16 +30,17 @@ class UserProfile
         $this->logger->log("User created \n\n");
     }
 
-    public function updateUser() {
-        
+    public function updateUser()
+    {
+
         // Update User logic
 
         // Log message
         $this->logger->log("User updated \n\n");
     }
 
-    public function deleteUser() {
-        
+    public function deleteUser()
+    {
         // Delete User logic
 
         // Log message
@@ -45,9 +49,14 @@ class UserProfile
 }
 
 $app = new Container();
-// Automatically it resolves dependency
-$userProfileObj = $app->make('UserProfile');
 
+// Container fires event during resolve
+$app->resolving(UserProfile::class, function ($loggerObj, $app) {
+    var_dump($loggerObj);
+    // var_dump($app);
+});
+
+$userProfileObj = $app->make('UserProfile');
 $userProfileObj->createUser();
 $userProfileObj->updateUser();
 $userProfileObj->deleteUser();
