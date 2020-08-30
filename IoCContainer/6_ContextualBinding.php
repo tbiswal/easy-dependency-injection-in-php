@@ -75,15 +75,11 @@ $app = new Container();
 
 $app->when(BillingService::class)
     ->needs(PaymentAPI::class)
-    ->give(function () {
-        return new Stripe();
-    });
+    ->give(Stripe::class);
 
 $app->when(OtherBillingService::class)
     ->needs(PaymentAPI::class)
-    ->give(function () {
-        return new Authorize();
-    });
+    ->give(Authorize::class);
 
 $billingService = $app->make('BillingService');
 $billingService->billable();
