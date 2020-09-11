@@ -8,17 +8,9 @@ interface PaymentAPI
 class Stripe implements PaymentAPI
 {
     public function subscribe($email) {
-        die('Stripe subscription added');
+        die('Stripe subscription added. ');
     }
 }
-
-// class Authorize implements PaymentAPI
-// {
-// 	public function subscribe($email) {
-// 		die('Authorize subscription added');
-// 	}
-// }
-
 
 class BillingService
 {
@@ -40,6 +32,3 @@ class BillingService
 
 $billingService = new BillingService(new Stripe());
 $billingService->billable();
-
-// $billingService = new BillingService(new Authorize());
-// $billingService->billable();
